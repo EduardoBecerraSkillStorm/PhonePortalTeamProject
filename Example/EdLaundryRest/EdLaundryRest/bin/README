@@ -1,0 +1,67 @@
+
+Description:
+ Welcome to my laundry application. 
+ This application is based how I’ve seen laundries in las vegas handle linen for hotels.
+ Please see below for the sample curl commands.
+ 
+ Sincerely, 
+ Eduardo Becerra (Ed)
+ 
+Libraries used: 
+ H2 database
+ Spring Boot
+ Spring Web
+ Spring JPA
+ Devtools
+ 
+Tools used:
+ Eclipes 
+
+ 
+Once this application is running copy and paste the following curl commands to the command prompt...
+
+Add a new hamper:
+curl -X POST localhost:8080/laundry/hamper -H "Content-Type: application/json" -d "{\"hamperNumber\":\"3748\", \"hamperWeight\":\"140\"}"
+curl -X POST localhost:8080/laundry/hamper -H "Content-Type: application/json" -d "{\"hamperNumber\":\"465\", \"hamperWeight\":\"130\"}"
+
+Make a new pickup:
+curl -X POST localhost:8080/laundry/pickup -H "Content-Type: application/json" -d "{\"hamperNumber\":\"3748\", \"pickupGrossLb\":\"1000\"}"
+curl -X POST localhost:8080/laundry/pickup -H "Content-Type: application/json" -d "{\"hamperNumber\":\"465\", \"pickupGrossLb\":\"500\"}"
+
+Make a new dropoff:
+curl -X POST localhost:8080/laundry/dropoff -H "Content-Type: application/json" -d "{\"hamperNumber\":\"3748\", \"dropoffGrossLb\":\"400\"}"
+curl -X POST localhost:8080/laundry/dropoff -H "Content-Type: application/json" -d "{\"hamperNumber\":\"465\", \"dropoffGrossLb\":\"300\"}"
+
+See pounds left at Laundry:
+curl localhost:8080/laundry/poundsLeftAtLaundry
+
+Once the customer has paid an invoice  
+update an invoiceStatus to closed by invoice:
+curl -X PUT localhost:8080/laundry/dropoff/1 -H "Content-Type: application/json" -d "{\"invoiceStatus\":\"closed\"}"
+
+See all invoices unpaid:
+curl localhost:8080/laundry/invoicePaid/open"
+
+See all invoices paid:
+curl localhost:8080/laundry/invoicePaid/closed"
+
+See all pickups:
+curl localhost:8080/laundry/pickup"
+
+See all dropoffs:
+curl localhost:8080/laundry/dropoff"
+
+See all hampers:
+curl localhost:8080/laundry/hamper"
+
+Delete a pickup:
+curl -X DELETE localhost:8080/laundry/pickup/1
+
+Delete a dropoff:
+curl -X DELETE localhost:8080/laundry/dropoff/1
+
+Delete a hamper:
+curl -X DELETE localhost:8080/laundry/hamper/3748
+ 
+ 
+ 
