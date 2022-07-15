@@ -23,7 +23,7 @@ public class UserName {
 	@Column
 	private String password;
 	
-	@OneToOne
+	//@OneToOne
 	@JoinColumn(name = "planNameID")
     private Plans plan;
 
