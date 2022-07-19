@@ -1,0 +1,14 @@
+.grid {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    gap: 10;
+}
+
+.image {
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.phonesPic {
+    justify-content: center;
+}
