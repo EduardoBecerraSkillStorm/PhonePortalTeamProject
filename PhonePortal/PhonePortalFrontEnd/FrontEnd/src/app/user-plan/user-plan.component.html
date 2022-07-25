@@ -1,24 +1,26 @@
-<div id="plan" class="col-lg-6">
-    <h2>Your Plan</h2>
-    <table id="plan-table" class ="table table-bordered">
-        <thead>
-            <tr>
-                <td>User Name</td>
-                <td>Plan</td>
-                <td>Device</td>
-                <td>Phone Number</td>
-            </tr>
-        </thead>
-        <tbody id="plan-table-body">
-            <!--loops through all elements-->
-            <tr *ngFor="let user of UserPlan">                       <!--instead of For, its *ngFor for a for loop-->
-                <td>{{user.userName}}</td>                                   <!--doube braackets for binding-->
-                <td>{{user.plan}}</td>
-                <td>{{user.device}}</td>
-                <td>{{user.phoneNumber}}</td>
-            </tr>
-        </tbody> 
-    </table>
-    <button (click)="growTable()" class="btn btn-primary">Click Me!</button>
-    <button (click)="reverseTable()" class="btn btn-primary">Reverse Me!</button>
+<div class="your-plan">
+    <div id="plan" class="col-lg-6">
+        <h2>Your Plan</h2>
+        <table id="plan-table" class ="table table-bordered">
+            <thead>
+                <tr>
+                    <td>User Name</td>
+                    <td>Plan</td>
+                    <td>Device</td>
+                    <td>Phone Number</td>
+                </tr>
+            </thead>
+            <tbody id="plan-table-body">
+                <!--loops through all elements-->
+                <tr *ngFor="let user of UserPlan">                       <!--instead of For, its *ngFor for a for loop-->
+                    <td>{{user.userName}}</td>                                   <!--doube braackets for binding-->
+                    <td>{{user.plan}}</td>
+                    <td>{{user.device}}</td>
+                    <td>{{user.phoneNumber}}</td>
+                </tr>
+            </tbody> 
+        </table>
+        <button (click)="growTable()" class="btn btn-primary">Click Me!</button>
+        <button (click)="reverseTable()" class="btn btn-primary">Reverse Me!</button>
+    </div>
 </div>

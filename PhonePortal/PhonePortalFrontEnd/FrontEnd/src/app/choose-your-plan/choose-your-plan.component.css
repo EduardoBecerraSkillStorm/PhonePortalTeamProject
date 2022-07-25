@@ -1,14 +1,18 @@
 .grid {
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    gap: 10;
+    gap: 0px;
+    margin-left: 120px;
+    margin-top: 20px;
+
 }
 
 .image {
-    max-width: 50%;
-    max-height: 50%;
+    max-width: 55%;
+
 }
 
 .phonesPic {
-    justify-content: center;
+    margin-left: 520px;
+    margin-top: 25px;
 }

@@ -1,0 +1,24 @@
+/*.container {
+    background-image: url("../../assets/homePage.jfif");
+    background-color: #cccccc;
+    width: 5000px;
+    height: 3000px;
+    margin-right: 1000px;;
+   }
+*/
+/*
+
+.container {
+    background-image: url("../../assets/homePage.jfif");
+    background-color: #cccccc;
+    width: 5000px;
+    height: 700px;
+   }
+*/
+.messsage{
+   margin-top: 350px;;
+   margin-left: 250px;
+   width: 600px;
+   color: rgb(255, 255, 255);
+}
+

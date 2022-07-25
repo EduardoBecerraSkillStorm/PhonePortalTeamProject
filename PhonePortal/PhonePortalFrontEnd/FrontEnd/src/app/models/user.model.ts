@@ -1,15 +1,13 @@
 export class User {
-    userNameID: number;    
-    userName: string;
-    plan: string;
-    device: string;
-    phoneNumber: number;
+    user_id: number;    
+    user_name: string;
+    pass_word: string;
+    token?: string;
 
-    constructor (userNameID: number, userName: string, plan: string, device: string, phoneNumber: number) {
-        this.userNameID = userNameID;
-        this.userName = userName;
-        this.plan = plan;
-        this. device = device;
-        this.phoneNumber = phoneNumber;
+
+    constructor (user_id: number, user_name: string, pass_word: string) {
+        this.user_id = user_id;
+        this.user_name = user_name;
+        this.pass_word = pass_word;
     }
 }
