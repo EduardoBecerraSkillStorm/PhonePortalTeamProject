@@ -9,10 +9,23 @@ Developed by:Eduardo Becerra & Dariel Guerra
 
 Please use the commands below on postman to use the application...
 
-Add new user: POST http://localhost:8085/newuser
+Add new user: 
+POST 
+http://localhost:8085/newuser
 {
-"user_name" : "dan pickles",
-"pass_word" : "1234"
+"name" : "dan pickles",
+"pass_word" : "4321"
+}
+
+*************************************************
+
+Log in
+GET 
+http://localhost:8085/existinguser
+
+{
+"name" : "username",
+"pass_word": "password"
 }
 
 **************************************************

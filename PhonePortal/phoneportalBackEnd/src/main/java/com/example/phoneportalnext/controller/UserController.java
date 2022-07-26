@@ -3,11 +3,8 @@ package com.example.phoneportalnext.controller;
 
 import java.util.List;
 import java.util.Optional;
-
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,9 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.phoneportalnext.entity.Users;
-import com.example.phoneportalnext.models.UserModel;
 import com.example.phoneportalnext.repository.UserRepository;
-import com.example.phoneportalnext.service.UserService;
 
 
 @RestController
@@ -29,6 +24,7 @@ public class UserController {
 
 	
 	//Create User
+	@CrossOrigin("http://localhost:4200")
 	@PostMapping("/newuser")
 	public Users newUser(@RequestBody Users user) {
 		return userRepository.save(user);
@@ -36,6 +32,7 @@ public class UserController {
 	
 
 	//Choose a User by id
+	@CrossOrigin("http://localhost:4200")
 	@GetMapping("/existinguser")
 	public Users getByUser1(@RequestBody Users user) {
 		Optional<Users> updateUserOptional = Optional.ofNullable(this.userRepository.findByname(user.getName()));
@@ -44,7 +41,6 @@ public class UserController {
 		}
 		
 		Users userFound = updateUserOptional.get();	
-		
 		if(!userFound.getPass_word().equals(user.getPass_word())) {
 			return null;
 		}
@@ -56,6 +52,7 @@ public class UserController {
 	
 	//NOT IN PRODUCTION 
 	//SetAllUsers
+	@CrossOrigin("http://localhost:4200")
 	@GetMapping("/allusers")
 	public List<Users> findAllUsers() {
 		return (List<Users>) userRepository.findAll();
@@ -63,6 +60,7 @@ public class UserController {
 	
 	//NOT IN PRODUCTION 
 	//Update a user by id
+	@CrossOrigin("http://localhost:4200")
 	@PutMapping("/user/{id}")
 	public Users updateUser(@PathVariable("id") Integer id, @RequestBody Users users) {
 		Optional<Users> updateUserOptional = this.userRepository.findById(id);
@@ -122,6 +120,7 @@ public class UserController {
 	}
 	
 	//Choose plan by id
+	@CrossOrigin("http://localhost:4200")
 	@PutMapping("/chooseplan/{id}")
 	public Users choosePlan(@PathVariable("id") Integer id, @RequestBody Users users) {
 		Optional<Users> updateUserOptional = this.userRepository.findById(id);
@@ -150,6 +149,7 @@ public class UserController {
 	
 	
 	//Finish updating standard plan
+	@CrossOrigin("http://localhost:4200")
 	@PutMapping("/standard/{id}")
 	public Users standard(@PathVariable("id") Integer id, @RequestBody Users users) {
 		Optional<Users> updateUserOptional = this.userRepository.findById(id);
@@ -171,6 +171,7 @@ public class UserController {
 	}
 	
 	//Finish updating plan
+	@CrossOrigin("http://localhost:4200")
 	@PutMapping("/family/{id}")
 	public Users family(@PathVariable("id") Integer id, @RequestBody Users users) {
 		Optional<Users> updateUserOptional = this.userRepository.findById(id);
@@ -216,6 +217,7 @@ public class UserController {
 	}
 	
 	//Finish updating utilmate plan
+	@CrossOrigin("http://localhost:4200")
 	@PutMapping("/ultimate/{id}")
 	public Users ultimate(@PathVariable("id") Integer id, @RequestBody Users users) {
 		Optional<Users> updateUserOptional = this.userRepository.findById(id);
@@ -239,6 +241,7 @@ public class UserController {
 
 	
 	//@Delete a user by ID
+	@CrossOrigin("http://localhost:4200")
 	@DeleteMapping("/delete/{id}")
 	public Users deleteUser(@PathVariable("id") Integer id) {
 		Optional<Users> deleteOptional = this.userRepository.findById(id);
