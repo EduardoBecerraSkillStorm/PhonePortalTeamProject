@@ -19,10 +19,9 @@ http://localhost:8085/newuser
 
 *************************************************
 
-Log in
+To log in
 GET 
 http://localhost:8085/existinguser
-
 {
 "name" : "username",
 "pass_word": "password"
@@ -31,16 +30,18 @@ http://localhost:8085/existinguser
 **************************************************
 Choose plan: 
 PUT 
-http://localhost:8085/chooseplan/{id}
+http://localhost:8085/chooseplan
 {
+"name" : "dan pickles",
 "plan_name" : "STANDARD"
 }
 
 **************************************************
 If standard plan chosen: 
 PUT 
-http://localhost:8085/standard/{id}
+http://localhost:8085/standard
 {
+"name" : "name",
 "phone_number_1" : 1234567,
 "device_name_1" : "device name"
 }
@@ -48,8 +49,9 @@ http://localhost:8085/standard/{id}
 **************************************************
 If standard plan chosen: 
 PUT 
-http://localhost:8085/family/{id}
+http://localhost:8085/family
 {
+"name" : "name",
 "phone_number_1" : 1234567,
 "device_name_1" : "device name",
 "phone_number_2" : 1234567,
@@ -63,8 +65,9 @@ http://localhost:8085/family/{id}
 **************************************************
 If ultimate plan chosen: 
 PUT 
-http://localhost:8085/ultimate/{id}
+http://localhost:8085/ultimate
 {
+"name" : "name",
 "phone_number_1" : 1234567,
 "device_name_1" : "device name"
 }
@@ -72,14 +75,23 @@ http://localhost:8085/ultimate/{id}
 **************************************************
 View a user(use to view bill): 
 GET 
-http://localhost:8085/getuser/{id}
+http://localhost:8085/getuser
+{
+    "name" : "name"
+}
 
 **************************************************
 Delete user: 
 DELETE 
-http://localhost:8085/delete/{id}
+http://localhost:8085/delete
+{
+    "name" : "name"
+}
 
 **************************************************
-NOT IN PRODUCTION Get all users: 
+NOT IN PRODUCTION 
+Get all users: 
 GET 
 http://localhost:8085/allusers
+
+
