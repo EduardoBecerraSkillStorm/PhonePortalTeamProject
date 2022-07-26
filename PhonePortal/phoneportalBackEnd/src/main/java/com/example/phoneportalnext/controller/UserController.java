@@ -4,8 +4,10 @@ package com.example.phoneportalnext.controller;
 import java.util.List;
 import java.util.Optional;
 
-
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.phoneportalnext.entity.Users;
+import com.example.phoneportalnext.models.UserModel;
 import com.example.phoneportalnext.repository.UserRepository;
+import com.example.phoneportalnext.service.UserService;
 
 
 @RestController
@@ -22,6 +26,7 @@ public class UserController {
 	
 	@Autowired
 	private UserRepository userRepository;
+
 	
 	//Create User
 	@PostMapping("/newuser")
@@ -29,18 +34,25 @@ public class UserController {
 		return userRepository.save(user);
 	}
 	
-	//Choose plan by id
-	@GetMapping("/getuser/{id}")
-	public Users getUser(@PathVariable("id") Integer id) {
-		Optional<Users> updateUserOptional = this.userRepository.findById(id);
+
+	//Choose a User by id
+	@GetMapping("/existinguser")
+	public Users getByUser1(@RequestBody Users user) {
+		Optional<Users> updateUserOptional = Optional.ofNullable(this.userRepository.findByname(user.getName()));
 		if(!updateUserOptional.isPresent()) {
 			return null;
-		}		
+		}
+		
 		Users userFound = updateUserOptional.get();	
+		
+		if(!userFound.getPass_word().equals(user.getPass_word())) {
+			return null;
+		}
 		
 		this.userRepository.save(userFound);
 		return userFound;
 	}
+	
 	
 	//NOT IN PRODUCTION 
 	//SetAllUsers
@@ -59,8 +71,8 @@ public class UserController {
 		}		
 		Users userFound = updateUserOptional.get();	
 		
-		if(users.getUser_name() != null) {
-		userFound.setUser_name(users.getUser_name());
+		if(users.getName() != null) {
+		userFound.setName(users.getName());
 		}
 		if(users.getPass_word() != null) {
 		userFound.setPass_word(users.getPass_word());

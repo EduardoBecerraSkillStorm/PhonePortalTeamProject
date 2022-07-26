@@ -1,20 +1,15 @@
 package com.example.phoneportalnext.entity;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
-import org.apache.catalina.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,7 +29,7 @@ public class Users {
 	private Integer user_id;
 	
 	@Column
-	private String user_name;
+	private String name;
 	
 	@Column
 	private String pass_word;
@@ -80,14 +75,13 @@ public class Users {
 		this.user_id = user_id;
 	}
 
-
-	public String getUser_name() {
-		return user_name;
+	public String getName() {
+		return name;
 	}
 
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
