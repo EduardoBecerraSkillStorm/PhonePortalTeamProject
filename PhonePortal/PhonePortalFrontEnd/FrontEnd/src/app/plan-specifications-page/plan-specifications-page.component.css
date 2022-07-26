@@ -1,0 +1,37 @@
+.grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 30px;
+    margin-left: 230px;
+    margin-top: 20px;
+
+}
+
+
+.device-title {
+    margin-left: -30px;
+}
+
+
+/*
+.deviceTitle {
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.dropdown {
+    margin-left: 400px;
+}
+
+.addPhoneNumberTitle {
+    justify-content: center;
+    text-align: center;
+    margin-top: 250px;
+}
+
+
+.phoneInput {
+    margin-left: 543px;
+}
+*/
