@@ -22,7 +22,7 @@ export class AccountComponent implements OnInit {
   }
 
   growTable(){
-
+     this.User;
   }
 
   reverseTable(){
