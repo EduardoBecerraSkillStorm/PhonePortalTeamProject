@@ -12,7 +12,7 @@ import { PersistanceService } from '../services/persistence.service';
 })
 export class AccountComponent implements OnInit {
   thisUser: User = new User ("","","","", 0,"","","","","","","",0);
-
+  device: string = "";
 
   constructor(private userService: UserService,
               private persister: PersistanceService
@@ -27,6 +27,9 @@ export class AccountComponent implements OnInit {
       let name = currentUser.name;
       console.log("name: " + name);
       this.thisUser = new User (currentUser.device_name_1, currentUser.device_name_2, currentUser.device_name_3,currentUser.device_name_4,currentUser.monthly_price,currentUser.name,currentUser.pass_word,currentUser.phone_number_1,currentUser.phone_number_2,currentUser.phone_number_3,currentUser.phone_number_4,currentUser.plan_name,currentUser.user_id);
+      
+      this.thisUser.device_name_1 = this.device;
+      console.log("device updated: " + JSON.stringify(this.thisUser));
       /*
       this.userService.findbyid(currentUser).subscribe((matchingUser) => {
         user = matchingUser;

@@ -12,7 +12,7 @@
             </thead>
             <tbody id="plan-table-body">
                 <!--loops through all elements-->
-                <tr *ngIf="thisUser != null">
+                <tr *ngIf="thisUser">
             <!--    <tr *ngFor="let user of user">   -->                    <!--instead of For, its *ngFor for a for loop-->
                     <td>{{thisUser.name}}</td>                                   <!--doube braackets for binding-->
                     <td>{{thisUser.plan_name}}</td>
@@ -22,4 +22,32 @@
             </tbody> 
         </table>
     </div>
+</div>
+
+
+
+<div class="choose-device">
+    <div class="device-title">
+        <h4>Choose your device</h4>
+    </div>
+ <!--**ngIf="device"-->
+    <label for="devices"></label>
+    <select #device name="device" id="devices" class="dropdown form-select-sm">
+    <!--<option value={{iPhone13}}>iPhone 13</option>-->    
+    <option value="iPhone13">iPhone 13</option>
+    <option value="iPhone13Pro">iPhone 13 Pro</option>
+    <option value="iPhone13ProMax">iPhone 13 Pro Max</option>
+    <option value="">iPhone 13 mini</option>
+    <option value="">Galaxy Z Fold3</option>
+    <option value="">Galaxy S22</option>
+    <option value="">Galaxy S22 Ultra</option>
+    <option value="">Galazy A13</option>
+    <option value="">moto g stylus</option>
+    <option value="">Pixel 6</option>
+    <option value="">Pixel 6 Pro</option>
+    <option value="">Galaxy S21 FE</option>
+    <option value="">Galaxy S20 FE</option>
+    <option value="">iPhone 12</option>
+    <option value="">iPhone 12 mini</option>
+    </select>
 </div>

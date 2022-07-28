@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlanSpecificationsPageComponent implements OnInit {
 
+  name = 'Peter';
+
   constructor() { }
 
   ngOnInit(): void {
