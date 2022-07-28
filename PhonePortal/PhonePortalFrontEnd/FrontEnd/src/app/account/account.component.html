@@ -12,12 +12,12 @@
             </thead>
             <tbody id="plan-table-body">
                 <!--loops through all elements-->
-                <tr>
+                <tr *ngIf="thisUser != null">
             <!--    <tr *ngFor="let user of user">   -->                    <!--instead of For, its *ngFor for a for loop-->
-                    <td>{{user.name}}</td>                                   <!--doube braackets for binding-->
-                    <td>{{user.plan_name}}</td>
-                    <td>{{user.device_name_1}}</td>
-                    <td>{{user.phone_number_1}}</td>
+                    <td>{{thisUser.name}}</td>                                   <!--doube braackets for binding-->
+                    <td>{{thisUser.plan_name}}</td>
+                    <td>{{thisUser.device_name_1}}</td>
+                    <td>{{thisUser.phone_number_1}}</td>
                 </tr>
             </tbody> 
         </table>
