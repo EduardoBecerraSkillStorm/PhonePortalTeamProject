@@ -12,7 +12,7 @@ export class AccountComponent implements OnInit {
   User: User[] = [];
 
   constructor(private userService: UserService,
-    private loginComponent: LoginComponent 
+   // private loginComponent: LoginComponent 
     ) { }
     
 
@@ -21,7 +21,7 @@ export class AccountComponent implements OnInit {
       if(data.body != null) {
         this.User = data.body;
         console.log("Body: " + this.User);
-        console.log(this.loginComponent.Login.name)
+       // console.log(this.loginComponent.Login.name)
       }
     });
   }

@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../models/login.model';
 import { UserService } from '../services/user.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
