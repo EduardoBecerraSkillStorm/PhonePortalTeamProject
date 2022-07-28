@@ -32,7 +32,7 @@ public class Users {
 	private String name;
 	
 	@Column
-	private String pass_word;
+	private String pass;
 
 	@Column
 	private String plan_name;
@@ -85,13 +85,13 @@ public class Users {
 	}
 
 
-	public String getPass_word() {
-		return pass_word;
+	public String getPass() {
+		return pass;
 	}
 
 
-	public void setPass_word(String pass_word) {
-		this.pass_word = pass_word;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 

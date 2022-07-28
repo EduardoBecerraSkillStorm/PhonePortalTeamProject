@@ -3,11 +3,11 @@
         <form #form="ngForm" (ngSubmit)="onSubmit(form)">
             <div class="form-group">
                 <label class="usernamelabel" for="UserName">User Name</label>
-                <input type="text" class="form-control" id="UserName" name="Username" placeholder="User Name" [(ngModel)]="Login.username">
+                <input type="text" class="form-control" id="UserName" name="Username" placeholder="User Name" [(ngModel)]="Login.name">
             </div>
             <div class="form-group">
                 <label for="Password">Password</label>
-                <input type="password" class="form-control" id="Password" name="Password" placeholder="Password" [(ngModel)]="Login.password">
+                <input type="text" class="form-control" id="Pass_word" name="Password" placeholder="Password" [(ngModel)]="Login.pass">
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>

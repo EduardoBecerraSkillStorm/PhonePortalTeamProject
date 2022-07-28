@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.phoneportalnext.entity.Users;
 import com.example.phoneportalnext.repository.UserRepository;
 
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 public class UserController {
 	
 	@Autowired
@@ -41,7 +43,27 @@ public class UserController {
 		}
 		
 		Users userFound = updateUserOptional.get();	
-		if(!userFound.getPass_word().equals(user.getPass_word())) {
+		if(!userFound.getPass().equals(user.getPass())) {
+			return null;
+		}
+		
+		this.userRepository.save(userFound);
+		return userFound;
+	}
+	
+	//Choose a User by id
+	@CrossOrigin("http://localhost:4200")
+	@GetMapping("/existinguser2")
+	public Users getByUserbyPassword2(@RequestParam("name") String name,@RequestParam("pass") String pass) {
+		Optional<Users> updateUserOptional = Optional.ofNullable(this.userRepository.findByname(name));
+		if(!updateUserOptional.isPresent()) {
+			return null;
+		}
+		
+		
+		Users userFound = updateUserOptional.get();	
+		String passInputString = userFound.getPass();
+		if(!passInputString.equals(pass)) {
 			return null;
 		}
 		
@@ -88,8 +110,8 @@ public class UserController {
 		if(users.getName() != null) {
 		userFound.setName(users.getName());
 		}
-		if(users.getPass_word() != null) {
-		userFound.setPass_word(users.getPass_word());
+		if(users.getPass() != null) {
+		userFound.setPass(users.getPass());
 		}
 		if(users.getPlan_name() != null) {
 		userFound.setPlan_name(users.getPlan_name());
