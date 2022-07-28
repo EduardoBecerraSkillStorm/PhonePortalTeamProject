@@ -12,7 +12,8 @@
             </thead>
             <tbody id="plan-table-body">
                 <!--loops through all elements-->
-                <tr *ngFor="let user of User">                       <!--instead of For, its *ngFor for a for loop-->
+                <tr>
+            <!--    <tr *ngFor="let user of user">   -->                    <!--instead of For, its *ngFor for a for loop-->
                     <td>{{user.name}}</td>                                   <!--doube braackets for binding-->
                     <td>{{user.plan_name}}</td>
                     <td>{{user.device_name_1}}</td>
@@ -20,7 +21,5 @@
                 </tr>
             </tbody> 
         </table>
-        <button (click)="growTable()" class="btn btn-primary">Click Me!</button>
-        <button (click)="reverseTable()" class="btn btn-primary">Reverse Me!</button>
     </div>
 </div>

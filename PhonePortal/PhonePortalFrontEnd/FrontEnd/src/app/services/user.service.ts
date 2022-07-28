@@ -10,6 +10,7 @@ import { Login } from '../models/login.model';
 export class UserService {
   url: string = "http://localhost:8085/allusers";
   urlLogin: string = "http://localhost:8085/existinguser";
+  urlget: string = "http://localhost:8085/getuser";
 
   //angular has built in http functionality instead of using axios, imported above:
   constructor(private httpClient: HttpClient,
@@ -25,6 +26,11 @@ export class UserService {
     return this.httpClient.get<Login>(`http://localhost:8085/existinguser2?name=${login.name}&pass=${login.pass}`);
 }
   
+  findbyid(login: Login): Observable<Login> {    
+    return this.httpClient.get<Login>("http://localhost:8085/getuser/" + login);
+  }
+
+
 //sendLogin(login: Login): Observable<HttpResponse<Login>> {
  //    const body = { name : "dude",
 //                    pass_word : 1234 };

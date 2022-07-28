@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../models/login.model';
 import { UserService } from '../services/user.service';
+import { PersistanceService } from '../services/persistence.service';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService, 
     private router: Router,
+    private persister: PersistanceService
     //private route: ActivatedRoute
   ) { }
 
@@ -44,7 +46,9 @@ export class LoginComponent implements OnInit {
 
 onSubmit(form:NgForm ) { 
     if(this.Login.name != "" && this.Login.pass != "") {
-     this.userService.sendLogin(this.Login).subscribe(loggedUser =>  { console.log(loggedUser)
+     this.userService.sendLogin(this.Login).subscribe(loggedUser =>  { 
+        console.log(loggedUser);
+        this.persister.set('currentUser', loggedUser);
         let route = this.router.config.find(r => r.path === 'account');
        if (route) {
          this.router.navigateByUrl('/account');
