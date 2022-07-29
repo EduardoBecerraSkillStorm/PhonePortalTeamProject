@@ -10,10 +10,11 @@
 }
 
 .btn{
+    border-color: aliceblue;
     width: 170px;
-    margin-left: 50px;
-    background-color: rgb(255, 212, 151);
-    color:rgb(1, 1, 101);
+    margin-left: 1000px;
+    background-color: rgb(83, 131, 203);
+    color:rgb(255, 255, 255);
     font-weight: 600;
 }
 
@@ -22,6 +23,10 @@
     font-size: 25px;
     font-weight: 400;
     color: white;
-    margin-left: 140px;
+    margin-left: 110px;
+}
+
+.name {
+    margin-left: 2px;
 }
 

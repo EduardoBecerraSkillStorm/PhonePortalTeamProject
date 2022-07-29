@@ -32,12 +32,14 @@
 
 
 <form (ngSubmit)="updateUserPlan()">
+    <mat-form-field appearance="fill">
     <mat-label>Choose a Plan:</mat-label>
-    <mat-select [(value)]="userPlan">
+    <mat-select class="choseplan" [(value)]="userPlan">
         <mat-option value="Standard">Standard 45GB of DATA a month</mat-option>
         <mat-option value="Ultimate">Ultimate UNLIMITED DATA a month</mat-option>
         <mat-option value="FamilyPlan">Family Plan: Up to 4 Lines, 45GB of DATA each</mat-option>
     </mat-select>
+</mat-form-field>
     <input class="btn btn-success submit-button" type="submit" value="Save"/>
 </form>
 
@@ -45,12 +47,15 @@
 <!--If FamilyPlan is selected, get amount of lines-->
 
 <form *ngIf="activateFamilyCount" (ngSubmit)="familyPlanAccount()">
+    
+    <mat-form-field appearance="fill">
     <mat-label>Choose a Count:</mat-label>
     <mat-select [(value)]="familyPlanAmount">
         <mat-option value="2">2 Lines</mat-option>
         <mat-option value="3">3 Lines</mat-option>
         <mat-option value="4">4 Lines</mat-option>
     </mat-select>
+    </mat-form-field>
     <input class="btn btn-success submit-button" type="submit" value="Save"/>
 </form>
 
@@ -59,6 +64,7 @@
 <!--Update device_1, appears if standard or ulitmate plan chosen-->
 <div *ngIf="activateDevices" class="form-control">
     <form  (ngSubmit)="updateDevice()">
+        <mat-form-field appearance="fill">
         <mat-label>Choose a device:</mat-label>
         <mat-select [(value)]="device">
             <mat-option value="iPhone13">iPhone 13</mat-option>
@@ -77,13 +83,14 @@
             <mat-option value="iPhone 12">iPhone 12</mat-option>
             <mat-option value="iPhone 12 mini">iPhone 12 mini</mat-option>
         </mat-select>
+    </mat-form-field>
         <input class="btn btn-success submit-button" type="submit" value="Save"/>
     </form>
 
     <form (ngSubmit)="updatePhoneNumber()">
         <div class="form-group">
             <label for="PhoneNumber">Phone Number</label>
-            <input [(ngModel)]="phoneNumber" type="text" class="form-control" id="PhoneNumber" name="PhoneNumber">
+            <input [(ngModel)]="phoneNumber" type="text" class="form-control1" id="PhoneNumber" name="PhoneNumber">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -95,6 +102,7 @@
 <form (ngSubmit)="updateFamilyPlan()">
 
     <div *ngIf="activateFamilyPlan">
+        <mat-form-field appearance="fill">
         <mat-label>Choose a device:</mat-label>
         <mat-select [(value)]="device">
             <mat-option value="iPhone13">iPhone 13</mat-option>
@@ -104,14 +112,15 @@
             <mat-option value="Galazy A13">Galazy A13</mat-option>
             <mat-option value="Pixel 6">Pixel 6</mat-option>
         </mat-select>
-
+    </mat-form-field>
         <div class="form-group">
             <label for="PhoneNumber">Phone Number</label>
-            <input [(ngModel)]="phoneNumber" type="text" class="form-control" id="PhoneNumber" name="PhoneNumber">
+            <input [(ngModel)]="phoneNumber" type="text" class="form-control1" id="PhoneNumber" name="PhoneNumber">
         </div>
     </div>
 
     <div *ngIf="activateFamilyPlan2">
+        <mat-form-field appearance="fill">
         <mat-label>Choose a device 2:</mat-label>
         <mat-select [(value)]="device2">
             <mat-option value="iPhone13">iPhone 13</mat-option>
@@ -121,14 +130,16 @@
             <mat-option value="Galazy A13">Galazy A13</mat-option>
             <mat-option value="Pixel 6">Pixel 6</mat-option>
         </mat-select>
+    </mat-form-field>
 
         <div class="form-group">
             <label for="PhoneNumber">Phone Number</label>
-            <input [(ngModel)]="phoneNumber2" type="text" class="form-control" id="PhoneNumber" name="PhoneNumber">
+            <input [(ngModel)]="phoneNumber2" type="text" class="form-control1" id="PhoneNumber" name="PhoneNumber">
         </div>
     </div>
 
     <div *ngIf="activateFamilyPlan3">
+        <mat-form-field appearance="fill">
         <mat-label>Choose a device 3:</mat-label>
         <mat-select [(value)]="device3">
             <mat-option value="iPhone13">iPhone 13</mat-option>
@@ -138,15 +149,16 @@
             <mat-option value="Galazy A13">Galazy A13</mat-option>
             <mat-option value="Pixel 6">Pixel 6</mat-option>
         </mat-select>
-
+    </mat-form-field>
         <div class="form-group">
             <label for="PhoneNumber">Phone Number</label>
-            <input [(ngModel)]="phoneNumber3" type="text" class="form-control" id="PhoneNumber" name="PhoneNumber">
+            <input [(ngModel)]="phoneNumber3" type="text" class="form-control1" id="PhoneNumber" name="PhoneNumber">
         </div>
     </div>
 
 
     <div *ngIf="activateFamilyPlan4">
+        <mat-form-field appearance="fill">
         <mat-label>Choose a device 4:</mat-label>
         <mat-select [(value)]="device4">
             <mat-option value="iPhone13">iPhone 13</mat-option>
@@ -156,10 +168,10 @@
             <mat-option value="Galazy A13">Galazy A13</mat-option>
             <mat-option value="Pixel 6">Pixel 6</mat-option>
         </mat-select>
-
+</mat-form-field>
         <div class="form-group">
             <label for="PhoneNumber">Phone Number</label>
-            <input [(ngModel)]="phoneNumber4" type="text" class="form-control" id="PhoneNumber" name="PhoneNumber">
+            <input [(ngModel)]="phoneNumber4" type="text" class="form-control1" id="PhoneNumber" name="PhoneNumber">
         </div>
     </div>
 

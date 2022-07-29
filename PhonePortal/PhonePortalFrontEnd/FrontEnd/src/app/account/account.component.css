@@ -6,3 +6,19 @@
 .btn {
     margin: 30px;
 }
+
+.phone {
+    max-width: 245px;
+    width: 245px;
+}
+
+.form-control1 {
+    max-width: 200px;
+    width: 200px;
+}
+
+.form-group {
+    max-width: 200px;
+    width: 200px;
+
+}

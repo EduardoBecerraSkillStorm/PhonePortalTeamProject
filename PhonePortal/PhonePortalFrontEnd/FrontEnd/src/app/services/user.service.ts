@@ -21,9 +21,17 @@ export class UserService {
    return this.http.get<User[]>(this.url, { observe: 'response' });
   }
 
+  
 
   sendLogin(login: Login): Observable<Login>  {
-    return this.httpClient.get<Login>(`http://localhost:8085/existinguser2?name=${login.name}&pass=${login.pass}`);
+    let words = login.pass;
+    let encrypted = "";
+    for(var char of words) {
+      let letter = String.fromCharCode(char.charCodeAt(0) + 1);
+      encrypted = encrypted + letter;
+    }
+
+    return this.httpClient.get<Login>(`http://localhost:8085/existinguser2?name=${login.name}&pass=${encrypted}`);
 }
 
 updateUser(currentUser: Login, user: User): Observable<Object>{
