@@ -9,6 +9,11 @@ import { ChooseYourPlanComponent } from './choose-your-plan/choose-your-plan.com
 import { PlanSpecificationsPageComponent } from './plan-specifications-page/plan-specifications-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 //import { LoginComponent } from './unused/login/login.component';
 //import { JwtInterceptor } from './unused/helpers/jwt.interceptor';
 //import { ErrorInterceptor } from './unused/helpers/error.interceptor';
@@ -29,7 +34,11 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   exports: [
     ReactiveFormsModule

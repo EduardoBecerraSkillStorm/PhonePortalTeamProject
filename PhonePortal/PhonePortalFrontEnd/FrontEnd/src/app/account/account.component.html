@@ -25,29 +25,47 @@
 </div>
 
 
+<form (ngSubmit)="updateUserPlan()">
+    <mat-label>Choose a Plan:</mat-label>
+    <mat-select [(value)]="userPlan">
+        <mat-option value="Standard">Standard 45GB of DATA a month</mat-option>
+        <mat-option value="iPhone13Pro">Ultimate UNLIMITED DATA a month</mat-option>
+        <mat-option value="iPhone13ProMax">Family Plan: Up to 4 Lines, 45GB of DATA each</mat-option>
+    </mat-select>
+    <input class="btn btn-success submit-button" type="submit" value="Save"/>
+</form>
 
-<div class="choose-device">
-    <div class="device-title">
-        <h4>Choose your device</h4>
+
+
+
+
+<!--Update device_1, appears if standard or ulitmate plan chosen-->
+ <form *ngIf="activateDevices" (ngSubmit)="updateDevice()">
+    <mat-label>Choose a device:</mat-label>-->
+    <mat-select [(value)]="device">
+        <mat-option value="iPhone13">iPhone 13</mat-option>
+        <mat-option value="iPhone13Pro">iPhone 13 Pro</mat-option>
+        <mat-option value="iPhone13ProMax">iPhone 13 Pro Max</mat-option>
+        <mat-option value="iPhone 13 mini">iPhone 13 mini</mat-option>
+        <mat-option value="Galaxy Z Fold3">Galaxy Z Fold3</mat-option>
+        <mat-option value="Galaxy S22">Galaxy S22</mat-option>
+        <mat-option value="Galaxy S22 Ultra">Galaxy S22 Ultra</mat-option>
+        <mat-option value="Galazy A13">Galazy A13</mat-option>
+        <mat-option value="moto g stylus">moto g stylus</mat-option>
+        <mat-option value="Pixel 6">Pixel 6</mat-option>
+        <mat-option value="Pixel 6 Pro">Pixel 6 Pro</mat-option>
+        <mat-option value="Galaxy S21 FE">Galaxy S21 FE</mat-option>
+        <mat-option value="Galaxy S20 FE">Galaxy S20 FE</mat-option>
+        <mat-option value="iPhone 12">iPhone 12</mat-option>
+        <mat-option value="iPhone 12 mini">iPhone 12 mini</mat-option>
+    </mat-select>
+    <input class="btn btn-success submit-button" type="submit" value="Save"/>
+</form>
+
+<form (ngSubmit)="updatePhoneNumber()">
+    <div class="form-group">
+        <label for="PhoneNumber">Phone Number</label>
+        <input [(ngModel)]="phoneNumber" type="text" class="form-control" id="PhoneNumber" name="PhoneNumber">
     </div>
- <!--**ngIf="device"-->
-    <label for="devices"></label>
-    <select #device name="device" id="devices" class="dropdown form-select-sm">
-    <!--<option value={{iPhone13}}>iPhone 13</option>-->    
-    <option value="iPhone13">iPhone 13</option>
-    <option value="iPhone13Pro">iPhone 13 Pro</option>
-    <option value="iPhone13ProMax">iPhone 13 Pro Max</option>
-    <option value="">iPhone 13 mini</option>
-    <option value="">Galaxy Z Fold3</option>
-    <option value="">Galaxy S22</option>
-    <option value="">Galaxy S22 Ultra</option>
-    <option value="">Galazy A13</option>
-    <option value="">moto g stylus</option>
-    <option value="">Pixel 6</option>
-    <option value="">Pixel 6 Pro</option>
-    <option value="">Galaxy S21 FE</option>
-    <option value="">Galaxy S20 FE</option>
-    <option value="">iPhone 12</option>
-    <option value="">iPhone 12 mini</option>
-    </select>
-</div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

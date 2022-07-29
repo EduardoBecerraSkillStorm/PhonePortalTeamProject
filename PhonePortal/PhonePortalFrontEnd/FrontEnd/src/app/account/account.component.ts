@@ -13,6 +13,9 @@ import { PersistanceService } from '../services/persistence.service';
 export class AccountComponent implements OnInit {
   thisUser: User = new User ("","","","", 0,"","","","","","","",0);
   device: string = "";
+  userPlan: string = "";
+  activateDevices: boolean = false;
+  phoneNumber: string = "";
 
   constructor(private userService: UserService,
               private persister: PersistanceService
@@ -27,9 +30,35 @@ export class AccountComponent implements OnInit {
       let name = currentUser.name;
       console.log("name: " + name);
       this.thisUser = new User (currentUser.device_name_1, currentUser.device_name_2, currentUser.device_name_3,currentUser.device_name_4,currentUser.monthly_price,currentUser.name,currentUser.pass_word,currentUser.phone_number_1,currentUser.phone_number_2,currentUser.phone_number_3,currentUser.phone_number_4,currentUser.plan_name,currentUser.user_id);
-      
+      /*
       this.thisUser.device_name_1 = this.device;
       console.log("device updated: " + JSON.stringify(this.thisUser));
+      console.log(this.device); */
+    }
+
+
+      updateUserPlan(): void {
+        this.thisUser.plan_name= this.userPlan;
+        if (this.thisUser.plan_name = "Standard" || "Ultimate") {
+          this.activateDevices = true;
+        }
+        console.log("device updated: " + JSON.stringify(this.thisUser));
+        console.log(this.device);
+      }
+
+
+      updateDevice(): void {
+        this.thisUser.device_name_1 = this.device;
+        console.log("device updated: " + JSON.stringify(this.thisUser));
+        console.log(this.device);
+      }
+
+      updatePhoneNumber(): void {
+        this.thisUser.phone_number_1 = this.phoneNumber;
+        console.log("device updated: " + JSON.stringify(this.thisUser));
+        console.log(this.thisUser.phone_number_1);
+      }
+      
       /*
       this.userService.findbyid(currentUser).subscribe((matchingUser) => {
         user = matchingUser;
@@ -65,4 +94,4 @@ export class AccountComponent implements OnInit {
     this.User.reverse();
   }
 */
-}
+

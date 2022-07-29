@@ -41,25 +41,25 @@ public class Users {
 	private Integer monthly_price;
 	
 	@Column
-	private Integer phone_number_1;
+	private String phone_number_1;
 	
 	@Column
 	private String device_name_1;
 	
 	@Column
-	private Integer phone_number_2;
+	private String phone_number_2;
 	
 	@Column
 	private String device_name_2;
 	
 	@Column
-	private Integer phone_number_3;
+	private String phone_number_3;
 	
 	@Column
 	private String device_name_3;
 	
 	@Column
-	private Integer phone_number_4;
+	private String phone_number_4;
 	
 	@Column
 	private String device_name_4;
@@ -115,12 +115,12 @@ public class Users {
 	}
 
 
-	public Integer getPhone_number_1() {
+	public String getPhone_number_1() {
 		return phone_number_1;
 	}
 
 
-	public void setPhone_number_1(Integer phone_number_1) {
+	public void setPhone_number_1(String phone_number_1) {
 		this.phone_number_1 = phone_number_1;
 	}
 
@@ -135,12 +135,12 @@ public class Users {
 	}
 
 
-	public Integer getPhone_number_2() {
+	public String getPhone_number_2() {
 		return phone_number_2;
 	}
 
 
-	public void setPhone_number_2(Integer phone_number_2) {
+	public void setPhone_number_2(String phone_number_2) {
 		this.phone_number_2 = phone_number_2;
 	}
 
@@ -155,12 +155,12 @@ public class Users {
 	}
 
 
-	public Integer getPhone_number_3() {
+	public String getPhone_number_3() {
 		return phone_number_3;
 	}
 
 
-	public void setPhone_number_3(Integer phone_number_3) {
+	public void setPhone_number_3(String phone_number_3) {
 		this.phone_number_3 = phone_number_3;
 	}
 
@@ -175,12 +175,12 @@ public class Users {
 	}
 
 
-	public Integer getPhone_number_4() {
+	public String getPhone_number_4() {
 		return phone_number_4;
 	}
 
 
-	public void setPhone_number_4(Integer phone_number_4) {
+	public void setPhone_number_4(String phone_number_4) {
 		this.phone_number_4 = phone_number_4;
 	}
 
