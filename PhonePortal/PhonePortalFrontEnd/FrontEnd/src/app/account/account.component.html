@@ -1,24 +1,29 @@
 <div class="your-plan">
-    <div id="plan" class="col-lg-6">
+    <div id="plan" class="col-lg-9">
         <h2>Your Plan</h2>
         <table id="plan-table" class ="table table-bordered">
             <thead>
                 <tr>
-                    <td>User Name</td>
-                    <td>Plan</td>
-                    <td>Device(s)</td>
+                    <td><b>User Name</b></td>
+                    <td><b>Plan</b></td>
+                    <td><b>Device(s)</b></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><b>Monthly Bill:</b></td>
                 </tr>
             </thead>
             <tbody id="plan-table-body">
                 <!--loops through all elements-->
                 <tr *ngIf="thisUser">
             <!--    <tr *ngFor="let user of user">   -->                    <!--instead of For, its *ngFor for a for loop-->
-                    <td>{{thisUser.name}}</td>                                   <!--doube braackets for binding-->
-                    <td>{{thisUser.plan_name}}</td>
-                    <td>{{thisUser.device_name_1}}</td>
-                    <td>{{thisUser.phone_number_1}}</td>
-                    <td>{{thisUser.device_name_2}}</td>
-                    <td>{{thisUser.phone_number_2}}</td>
+                    <td><b>{{thisUser.name}}</b></td>                                   <!--doube braackets for binding-->
+                    <td><b>{{thisUser.plan_name}}</b></td>
+                    <td><b>Device:</b><br>{{thisUser.device_name_1}}<br><b>Phone Number:</b><br>{{thisUser.phone_number_1}}</td>
+                    <td><b>Device 2:</b><br>{{thisUser.device_name_2}}<br><b>Phone Number:</b><br>{{thisUser.phone_number_2}}</td>
+                    <td><b>Device 3:</b><br>{{thisUser.device_name_3}}<br><b>Phone Number:</b><br>{{thisUser.phone_number_3}}</td>
+                    <td><b>Device 4:</b><br>{{thisUser.device_name_4}}<br><b>Phone Number:</b><br>{{thisUser.phone_number_4}}</td>
+                    <td><b>${{thisUser.monthly_price}}</b></td>
                 </tr>
             </tbody> 
         </table>

@@ -29,6 +29,12 @@ export class AccountComponent implements OnInit {
   activateFamilyPlan4: boolean = false;
   familyPlanAmount: string = "";
   activateFamilyCount: boolean = false;
+  monthlyBill: number = 0;
+  ultimatePlanPrice: number = 55;
+  standardPlanPrice: number = 35;
+  familyPlan2Price: number = 60;
+  familyPlan3Price: number = 90;
+  familyPlan4Price: number = 120;
 
 
   constructor(private userService: UserService,
@@ -48,30 +54,16 @@ export class AccountComponent implements OnInit {
     }
 
 
-      familyPlanAccount(): void {
-        this.familyPlanAmount;
-        if (this.familyPlanAmount = "2" ) {
-          this.activateFamilyPlan = true;
-          this.activateFamilyPlan2 = true;
-        }
-        else if (this.familyPlanAmount = "3" ) {
-          this.activateFamilyPlan = true;
-          this.activateFamilyPlan2 = true;
-          this.activateFamilyPlan3 = true;
-        }
-        else if (this.familyPlanAmount = "4" ) {
-        this.activateFamilyPlan = true;
-        this.activateFamilyPlan2 = true;
-        this.activateFamilyPlan3 = true;
-        this.activateFamilyPlan4 = true;
-        }
-      }
-
-
       updateUserPlan(): void {
+        console.log(this.familyPlanAmount);
         this.thisUser.plan_name= this.userPlan;
-        if (this.thisUser.plan_name === "Standard" || this.thisUser.plan_name === "Ultimate") {
+        if (this.thisUser.plan_name === "Standard")  {
           this.activateDevices = true;
+          this.thisUser.monthly_price = this.standardPlanPrice;
+        }
+        else if (this.thisUser.plan_name === "Ultimate") {
+          this.activateDevices = true;
+          this.thisUser.monthly_price = this.ultimatePlanPrice;
         }
         else if (this.thisUser.plan_name === "FamilyPlan") {
           this.activateFamilyCount = true;
@@ -88,6 +80,27 @@ export class AccountComponent implements OnInit {
         })
       }
 
+      familyPlanAccount(): void {
+        this.familyPlanAmount;
+        if (this.familyPlanAmount === "2" ) {
+          this.activateFamilyPlan = true;
+          this.activateFamilyPlan2 = true;
+          this.thisUser.monthly_price = this.familyPlan2Price;
+        }
+        else if (this.familyPlanAmount === "3" ) {
+          this.activateFamilyPlan = true;
+          this.activateFamilyPlan2 = true;
+          this.activateFamilyPlan3 = true;
+          this.thisUser.monthly_price = this.familyPlan3Price;
+        }
+        else if (this.familyPlanAmount === "4" ) {
+        this.activateFamilyPlan = true;
+        this.activateFamilyPlan2 = true;
+        this.activateFamilyPlan3 = true;
+        this.activateFamilyPlan4 = true;
+        this.thisUser.monthly_price = this.familyPlan4Price;
+        }
+      }
 
 
       updateDevice(): void {
