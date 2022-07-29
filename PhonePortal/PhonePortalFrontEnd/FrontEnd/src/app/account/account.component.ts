@@ -3,6 +3,7 @@ import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
 import {LoginComponent} from '../login/login.component';
 import { PersistanceService } from '../services/persistence.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class AccountComponent implements OnInit {
   phoneNumber: string = "";
 
   constructor(private userService: UserService,
+              private router: Router,
               private persister: PersistanceService
    // private loginComponent: LoginComponent 
     ) { }
@@ -44,6 +46,18 @@ export class AccountComponent implements OnInit {
         }
         console.log("device updated: " + JSON.stringify(this.thisUser));
         console.log(this.device);
+
+        const currentUser = this.persister.get('currentUser');
+        this.userService.updateUser(currentUser, this.thisUser).subscribe(updatedUser => {
+          this.persister.set('currentUser', updatedUser );
+          let route = this.router.config.find(r => r.path === 'account');
+          if (route) {
+            this.router.navigateByUrl('/account');
+           }
+        })
+
+
+
       }
 
 
@@ -51,12 +65,32 @@ export class AccountComponent implements OnInit {
         this.thisUser.device_name_1 = this.device;
         console.log("device updated: " + JSON.stringify(this.thisUser));
         console.log(this.device);
+
+        const currentUser = this.persister.get('currentUser');
+        this.userService.updateUser(currentUser, this.thisUser).subscribe(updatedUser => {
+          this.persister.set('currentUser', updatedUser );
+          let route = this.router.config.find(r => r.path === 'account');
+          if (route) {
+            this.router.navigateByUrl('/account');
+           }
+        })
+
       }
 
       updatePhoneNumber(): void {
         this.thisUser.phone_number_1 = this.phoneNumber;
         console.log("device updated: " + JSON.stringify(this.thisUser));
         console.log(this.thisUser.phone_number_1);
+
+        const currentUser = this.persister.get('currentUser');
+        this.userService.updateUser(currentUser, this.thisUser).subscribe(updatedUser => {
+          this.persister.set('currentUser', updatedUser );
+          let route = this.router.config.find(r => r.path === 'account');
+          if (route) {
+            this.router.navigateByUrl('/account');
+           }
+        })
+
       }
       
       /*

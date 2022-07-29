@@ -25,6 +25,13 @@ export class UserService {
   sendLogin(login: Login): Observable<Login>  {
     return this.httpClient.get<Login>(`http://localhost:8085/existinguser2?name=${login.name}&pass=${login.pass}`);
 }
+
+updateUser(currentUser: Login, user: User): Observable<Object>{
+  console.log("login.name: " + currentUser.name);
+  console.log("login.pass: " + currentUser.pass);
+  console.log("user: ");
+  return this.httpClient.put(`http://localhost:8085/edituser?name=${currentUser.name}&pass=${currentUser.pass}`, user);
+}
   
   findbyid(login: Login): Observable<Login> {    
     return this.httpClient.get<Login>("http://localhost:8085/getuser/" + login);
