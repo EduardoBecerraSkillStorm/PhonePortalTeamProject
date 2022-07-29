@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     //pass: string
     //login: Login
 
-  constructor(
+  constructor(    
     private userService: UserService, 
     private router: Router,
     private persister: PersistanceService
@@ -47,7 +47,8 @@ export class LoginComponent implements OnInit {
 onSubmit(form:NgForm ) { 
     if(this.Login.name != "" && this.Login.pass != "") {
      this.userService.sendLogin(this.Login).subscribe(loggedUser =>  { 
-        console.log(loggedUser);
+        console.log(JSON.stringify(loggedUser));
+        console.log(this.Login.name + "  " + this.Login.pass);
         this.persister.set('currentUser', loggedUser);
         let route = this.router.config.find(r => r.path === 'account');
        if (route) {

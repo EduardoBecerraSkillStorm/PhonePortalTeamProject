@@ -1,3 +1,5 @@
+
+
 <div class="your-plan">
     <div id="plan" class="col-lg-9">
         <h2>Your Plan</h2>
@@ -7,9 +9,9 @@
                     <td><b>User Name</b></td>
                     <td><b>Plan</b></td>
                     <td><b>Device(s)</b></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td *ngIf="devicesTitle2"></td>
+                    <td *ngIf="devicesTitle3"></td>
+                    <td *ngIf="devicesTitle4"></td>
                     <td><b>Monthly Bill:</b></td>
                 </tr>
             </thead>
@@ -20,9 +22,9 @@
                     <td><b>{{thisUser.name}}</b></td>                                   <!--doube braackets for binding-->
                     <td><b>{{thisUser.plan_name}}</b></td>
                     <td><b>Device:</b><br>{{thisUser.device_name_1}}<br><b>Phone Number:</b><br>{{thisUser.phone_number_1}}</td>
-                    <td><b>Device 2:</b><br>{{thisUser.device_name_2}}<br><b>Phone Number:</b><br>{{thisUser.phone_number_2}}</td>
-                    <td><b>Device 3:</b><br>{{thisUser.device_name_3}}<br><b>Phone Number:</b><br>{{thisUser.phone_number_3}}</td>
-                    <td><b>Device 4:</b><br>{{thisUser.device_name_4}}<br><b>Phone Number:</b><br>{{thisUser.phone_number_4}}</td>
+                    <td *ngIf="devicesTitle2"><b>Device 2:</b><br>{{thisUser.device_name_2}}<br><b>Phone Number:</b><br>{{thisUser.phone_number_2}}</td>
+                    <td *ngIf="devicesTitle3"><b>Device 3:</b><br>{{thisUser.device_name_3}}<br><b>Phone Number:</b><br>{{thisUser.phone_number_3}}</td>
+                    <td *ngIf="devicesTitle4"><b>Device 4:</b><br>{{thisUser.device_name_4}}<br><b>Phone Number:</b><br>{{thisUser.phone_number_4}}</td>
                     <td><b>${{thisUser.monthly_price}}</b></td>
                 </tr>
             </tbody> 
@@ -30,6 +32,7 @@
     </div>
 </div>
 
+<div class="content">
 
 <form (ngSubmit)="updateUserPlan()">
     <mat-form-field appearance="fill">
@@ -87,19 +90,19 @@
         <input class="btn btn-success submit-button" type="submit" value="Save"/>
     </form>
 
-    <form (ngSubmit)="updatePhoneNumber()">
+    <form *ngIf="activatePhoneNumber" (ngSubmit)="updatePhoneNumber()">
         <div class="form-group">
             <label for="PhoneNumber">Phone Number</label>
             <input [(ngModel)]="phoneNumber" type="text" class="form-control1" id="PhoneNumber" name="PhoneNumber">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <input class="phonenumberbutton btn btn-success submit-button" type="submit" value="Save"/>
     </form>
 </div>
 
 
 <!--Family Plan-->
 
-<form (ngSubmit)="updateFamilyPlan()">
+<form *ngIf="activateFamilyPlanComponent" (ngSubmit)="updateFamilyPlan()">
 
     <div *ngIf="activateFamilyPlan">
         <mat-form-field appearance="fill">
@@ -178,3 +181,4 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
+</div>

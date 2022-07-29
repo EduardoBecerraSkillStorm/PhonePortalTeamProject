@@ -60,10 +60,19 @@ public class UserController {
 			return null;
 		}
 		
+		String decrypted = "";
+		char[] ch = pass.toCharArray();
+		for(char c : ch) {
+			System.out.println("char:"+ c);
+			System.out.println((int)c - 1);
+			int number = (int)c - 1;
+			decrypted = decrypted + (char)number;
+		}
+		System.out.println(decrypted);
 		
 		Users userFound = updateUserOptional.get();	
 		String passInputString = userFound.getPass();
-		if(!passInputString.equals(pass)) {
+		if(!passInputString.equals(decrypted)) {
 			return null;
 		}
 		

@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
 })
 export class AccountComponent implements OnInit {
   thisUser: User = new User ("","","","", 0,"","","","","","","",0);
-  activateDevices: boolean = false;
   userPlan: string = "";
   device: string = "";
   device2: string = "";
@@ -35,7 +34,12 @@ export class AccountComponent implements OnInit {
   familyPlan2Price: number = 60;
   familyPlan3Price: number = 90;
   familyPlan4Price: number = 120;
-
+  devicesTitle2: boolean = false;
+  devicesTitle3: boolean = false;
+  devicesTitle4: boolean = false;
+  activateFamilyPlanComponent: boolean = false;
+  activateDevices: boolean = false;
+  activatePhoneNumber: boolean = false;
 
   constructor(private userService: UserService,
               private router: Router,
@@ -44,12 +48,8 @@ export class AccountComponent implements OnInit {
     ) { }
  
     ngOnInit(): void {
-      let user: any;
       const currentUser = this.persister.get('currentUser');
       console.log("this is currentUser: " + JSON.stringify(currentUser));
-      //thisUser: User = new User (currentUser);
-      let name = currentUser.name;
-      console.log("name: " + name);
       this.thisUser = new User (currentUser.device_name_1, currentUser.device_name_2, currentUser.device_name_3,currentUser.device_name_4,currentUser.monthly_price,currentUser.name,currentUser.pass_word,currentUser.phone_number_1,currentUser.phone_number_2,currentUser.phone_number_3,currentUser.phone_number_4,currentUser.plan_name,currentUser.user_id);
     }
 
@@ -58,15 +58,42 @@ export class AccountComponent implements OnInit {
         console.log(this.familyPlanAmount);
         this.thisUser.plan_name= this.userPlan;
         if (this.thisUser.plan_name === "Standard")  {
-          this.activateDevices = true;
           this.thisUser.monthly_price = this.standardPlanPrice;
+          this.thisUser.device_name_2 = "";
+          this.thisUser.device_name_3 = "";
+          this.thisUser.device_name_4 = "";
+          this.thisUser.phone_number_2 = "";
+          this.thisUser.phone_number_3 = "";
+          this.thisUser.phone_number_4 = "";
+          this.devicesTitle2 = false;
+          this.devicesTitle3 = false;
+          this.devicesTitle4 = false;
+          this.activateFamilyCount = false;
+          this.activateDevices = true;
+          this.activatePhoneNumber = true;
+          this.activateFamilyPlanComponent = false;
         }
         else if (this.thisUser.plan_name === "Ultimate") {
           this.activateDevices = true;
           this.thisUser.monthly_price = this.ultimatePlanPrice;
+          this.thisUser.device_name_2 = "";
+          this.thisUser.device_name_3 = "";
+          this.thisUser.device_name_4 = "";
+          this.thisUser.phone_number_2 = "";
+          this.thisUser.phone_number_3 = "";
+          this.thisUser.phone_number_4 = "";
+          this.devicesTitle2 = false;
+          this.devicesTitle3 = false;
+          this.devicesTitle4 = false;
+          this.activateFamilyCount = false;
+          this.activateDevices = true;
+          this.activatePhoneNumber = true;
+          this.activateFamilyPlanComponent = false;
         }
         else if (this.thisUser.plan_name === "FamilyPlan") {
           this.activateFamilyCount = true;
+                  this.activateDevices = false;
+        this.activatePhoneNumber = false;
         }
         console.log("plan updated: " + JSON.stringify(this.thisUser));
 
@@ -82,16 +109,20 @@ export class AccountComponent implements OnInit {
 
       familyPlanAccount(): void {
         this.familyPlanAmount;
+        this.activateFamilyPlanComponent = true;
         if (this.familyPlanAmount === "2" ) {
           this.activateFamilyPlan = true;
           this.activateFamilyPlan2 = true;
           this.thisUser.monthly_price = this.familyPlan2Price;
+          this.devicesTitle2 = true;
         }
         else if (this.familyPlanAmount === "3" ) {
           this.activateFamilyPlan = true;
           this.activateFamilyPlan2 = true;
           this.activateFamilyPlan3 = true;
           this.thisUser.monthly_price = this.familyPlan3Price;
+          this.devicesTitle2 = true;
+          this.devicesTitle3 = true;
         }
         else if (this.familyPlanAmount === "4" ) {
         this.activateFamilyPlan = true;
@@ -99,6 +130,9 @@ export class AccountComponent implements OnInit {
         this.activateFamilyPlan3 = true;
         this.activateFamilyPlan4 = true;
         this.thisUser.monthly_price = this.familyPlan4Price;
+        this.devicesTitle2 = true;
+        this.devicesTitle3 = true;
+        this.devicesTitle4 = true;
         }
       }
 

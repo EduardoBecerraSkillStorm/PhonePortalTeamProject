@@ -25,6 +25,7 @@ export class UserService {
 
   sendLogin(login: Login): Observable<Login>  {
     let words = login.pass;
+    console.log("password went to userservice: " + login.pass)
     let encrypted = "";
     for(var char of words) {
       let letter = String.fromCharCode(char.charCodeAt(0) + 1);
