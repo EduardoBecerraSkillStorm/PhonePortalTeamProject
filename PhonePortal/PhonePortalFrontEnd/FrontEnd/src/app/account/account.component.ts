@@ -13,10 +13,23 @@ import { Router } from '@angular/router';
 })
 export class AccountComponent implements OnInit {
   thisUser: User = new User ("","","","", 0,"","","","","","","",0);
-  device: string = "";
-  userPlan: string = "";
   activateDevices: boolean = false;
+  userPlan: string = "";
+  device: string = "";
+  device2: string = "";
+  device3: string = "";
+  device4: string = "";
   phoneNumber: string = "";
+  phoneNumber2: string = "";
+  phoneNumber3: string = "";
+  phoneNumber4: string = "";
+  activateFamilyPlan: boolean = false;
+  activateFamilyPlan2: boolean = false;
+  activateFamilyPlan3: boolean = false;
+  activateFamilyPlan4: boolean = false;
+  familyPlanAmount: string = "";
+  activateFamilyCount: boolean = false;
+
 
   constructor(private userService: UserService,
               private router: Router,
@@ -32,20 +45,38 @@ export class AccountComponent implements OnInit {
       let name = currentUser.name;
       console.log("name: " + name);
       this.thisUser = new User (currentUser.device_name_1, currentUser.device_name_2, currentUser.device_name_3,currentUser.device_name_4,currentUser.monthly_price,currentUser.name,currentUser.pass_word,currentUser.phone_number_1,currentUser.phone_number_2,currentUser.phone_number_3,currentUser.phone_number_4,currentUser.plan_name,currentUser.user_id);
-      /*
-      this.thisUser.device_name_1 = this.device;
-      console.log("device updated: " + JSON.stringify(this.thisUser));
-      console.log(this.device); */
     }
+
+
+      familyPlanAccount(): void {
+        this.familyPlanAmount;
+        if (this.familyPlanAmount = "2" ) {
+          this.activateFamilyPlan = true;
+          this.activateFamilyPlan2 = true;
+        }
+        else if (this.familyPlanAmount = "3" ) {
+          this.activateFamilyPlan = true;
+          this.activateFamilyPlan2 = true;
+          this.activateFamilyPlan3 = true;
+        }
+        else if (this.familyPlanAmount = "4" ) {
+        this.activateFamilyPlan = true;
+        this.activateFamilyPlan2 = true;
+        this.activateFamilyPlan3 = true;
+        this.activateFamilyPlan4 = true;
+        }
+      }
 
 
       updateUserPlan(): void {
         this.thisUser.plan_name= this.userPlan;
-        if (this.thisUser.plan_name = "Standard" || "Ultimate") {
+        if (this.thisUser.plan_name === "Standard" || this.thisUser.plan_name === "Ultimate") {
           this.activateDevices = true;
         }
-        console.log("device updated: " + JSON.stringify(this.thisUser));
-        console.log(this.device);
+        else if (this.thisUser.plan_name === "FamilyPlan") {
+          this.activateFamilyCount = true;
+        }
+        console.log("plan updated: " + JSON.stringify(this.thisUser));
 
         const currentUser = this.persister.get('currentUser');
         this.userService.updateUser(currentUser, this.thisUser).subscribe(updatedUser => {
@@ -55,10 +86,8 @@ export class AccountComponent implements OnInit {
             this.router.navigateByUrl('/account');
            }
         })
-
-
-
       }
+
 
 
       updateDevice(): void {
@@ -90,8 +119,41 @@ export class AccountComponent implements OnInit {
             this.router.navigateByUrl('/account');
            }
         })
-
       }
+      
+      updateFamilyPlan(): void {
+        this.thisUser.device_name_1 = this.device; 
+        this.thisUser.device_name_2 = this.device2;
+        this.thisUser.device_name_3 = this.device3;
+        this.thisUser.device_name_4 = this.device4;
+        this.thisUser.phone_number_1 = this.phoneNumber;
+        this.thisUser.phone_number_2 = this.phoneNumber2;
+        this.thisUser.phone_number_3 = this.phoneNumber3;
+        this.thisUser.phone_number_4 = this.phoneNumber4;
+        console.log("user updated: " + JSON.stringify(this.thisUser));
+
+        const currentUser = this.persister.get('currentUser');
+        this.userService.updateUser(currentUser, this.thisUser).subscribe(updatedUser => {
+          this.persister.set('currentUser', updatedUser );
+          let route = this.router.config.find(r => r.path === 'account');
+          if (route) {
+            this.router.navigateByUrl('/account');
+           }
+        })
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
       
       /*
       this.userService.findbyid(currentUser).subscribe((matchingUser) => {

@@ -6,8 +6,7 @@
                 <tr>
                     <td>User Name</td>
                     <td>Plan</td>
-                    <td>Device</td>
-                    <td>Phone Number</td>
+                    <td>Device(s)</td>
                 </tr>
             </thead>
             <tbody id="plan-table-body">
@@ -18,6 +17,8 @@
                     <td>{{thisUser.plan_name}}</td>
                     <td>{{thisUser.device_name_1}}</td>
                     <td>{{thisUser.phone_number_1}}</td>
+                    <td>{{thisUser.device_name_2}}</td>
+                    <td>{{thisUser.phone_number_2}}</td>
                 </tr>
             </tbody> 
         </table>
@@ -29,43 +30,134 @@
     <mat-label>Choose a Plan:</mat-label>
     <mat-select [(value)]="userPlan">
         <mat-option value="Standard">Standard 45GB of DATA a month</mat-option>
-        <mat-option value="iPhone13Pro">Ultimate UNLIMITED DATA a month</mat-option>
-        <mat-option value="iPhone13ProMax">Family Plan: Up to 4 Lines, 45GB of DATA each</mat-option>
+        <mat-option value="Ultimate">Ultimate UNLIMITED DATA a month</mat-option>
+        <mat-option value="FamilyPlan">Family Plan: Up to 4 Lines, 45GB of DATA each</mat-option>
     </mat-select>
     <input class="btn btn-success submit-button" type="submit" value="Save"/>
 </form>
 
 
+<!--If FamilyPlan is selected, get amount of lines-->
+
+<form *ngIf="activateFamilyCount" (ngSubmit)="familyPlanAccount()">
+    <mat-label>Choose a Count:</mat-label>
+    <mat-select [(value)]="familyPlanAmount">
+        <mat-option value="2">2 Lines</mat-option>
+        <mat-option value="3">3 Lines</mat-option>
+        <mat-option value="4">4 Lines</mat-option>
+    </mat-select>
+    <input class="btn btn-success submit-button" type="submit" value="Save"/>
+</form>
 
 
 
 <!--Update device_1, appears if standard or ulitmate plan chosen-->
- <form *ngIf="activateDevices" (ngSubmit)="updateDevice()">
-    <mat-label>Choose a device:</mat-label>-->
-    <mat-select [(value)]="device">
-        <mat-option value="iPhone13">iPhone 13</mat-option>
-        <mat-option value="iPhone13Pro">iPhone 13 Pro</mat-option>
-        <mat-option value="iPhone13ProMax">iPhone 13 Pro Max</mat-option>
-        <mat-option value="iPhone 13 mini">iPhone 13 mini</mat-option>
-        <mat-option value="Galaxy Z Fold3">Galaxy Z Fold3</mat-option>
-        <mat-option value="Galaxy S22">Galaxy S22</mat-option>
-        <mat-option value="Galaxy S22 Ultra">Galaxy S22 Ultra</mat-option>
-        <mat-option value="Galazy A13">Galazy A13</mat-option>
-        <mat-option value="moto g stylus">moto g stylus</mat-option>
-        <mat-option value="Pixel 6">Pixel 6</mat-option>
-        <mat-option value="Pixel 6 Pro">Pixel 6 Pro</mat-option>
-        <mat-option value="Galaxy S21 FE">Galaxy S21 FE</mat-option>
-        <mat-option value="Galaxy S20 FE">Galaxy S20 FE</mat-option>
-        <mat-option value="iPhone 12">iPhone 12</mat-option>
-        <mat-option value="iPhone 12 mini">iPhone 12 mini</mat-option>
-    </mat-select>
-    <input class="btn btn-success submit-button" type="submit" value="Save"/>
-</form>
+<div *ngIf="activateDevices" class="form-control">
+    <form  (ngSubmit)="updateDevice()">
+        <mat-label>Choose a device:</mat-label>
+        <mat-select [(value)]="device">
+            <mat-option value="iPhone13">iPhone 13</mat-option>
+            <mat-option value="iPhone13Pro">iPhone 13 Pro</mat-option>
+            <mat-option value="iPhone13ProMax">iPhone 13 Pro Max</mat-option>
+            <mat-option value="iPhone 13 mini">iPhone 13 mini</mat-option>
+            <mat-option value="Galaxy Z Fold3">Galaxy Z Fold3</mat-option>
+            <mat-option value="Galaxy S22">Galaxy S22</mat-option>
+            <mat-option value="Galaxy S22 Ultra">Galaxy S22 Ultra</mat-option>
+            <mat-option value="Galazy A13">Galazy A13</mat-option>
+            <mat-option value="moto g stylus">moto g stylus</mat-option>
+            <mat-option value="Pixel 6">Pixel 6</mat-option>
+            <mat-option value="Pixel 6 Pro">Pixel 6 Pro</mat-option>
+            <mat-option value="Galaxy S21 FE">Galaxy S21 FE</mat-option>
+            <mat-option value="Galaxy S20 FE">Galaxy S20 FE</mat-option>
+            <mat-option value="iPhone 12">iPhone 12</mat-option>
+            <mat-option value="iPhone 12 mini">iPhone 12 mini</mat-option>
+        </mat-select>
+        <input class="btn btn-success submit-button" type="submit" value="Save"/>
+    </form>
 
-<form (ngSubmit)="updatePhoneNumber()">
-    <div class="form-group">
-        <label for="PhoneNumber">Phone Number</label>
-        <input [(ngModel)]="phoneNumber" type="text" class="form-control" id="PhoneNumber" name="PhoneNumber">
+    <form (ngSubmit)="updatePhoneNumber()">
+        <div class="form-group">
+            <label for="PhoneNumber">Phone Number</label>
+            <input [(ngModel)]="phoneNumber" type="text" class="form-control" id="PhoneNumber" name="PhoneNumber">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+<!--Family Plan-->
+
+<form (ngSubmit)="updateFamilyPlan()">
+
+    <div *ngIf="activateFamilyPlan">
+        <mat-label>Choose a device:</mat-label>
+        <mat-select [(value)]="device">
+            <mat-option value="iPhone13">iPhone 13</mat-option>
+            <mat-option value="iPhone 13 mini">iPhone 13 mini</mat-option>
+            <mat-option value="Galaxy Z Fold3">Galaxy Z Fold3</mat-option>
+            <mat-option value="Galaxy S22">Galaxy S22</mat-option>
+            <mat-option value="Galazy A13">Galazy A13</mat-option>
+            <mat-option value="Pixel 6">Pixel 6</mat-option>
+        </mat-select>
+
+        <div class="form-group">
+            <label for="PhoneNumber">Phone Number</label>
+            <input [(ngModel)]="phoneNumber" type="text" class="form-control" id="PhoneNumber" name="PhoneNumber">
+        </div>
     </div>
+
+    <div *ngIf="activateFamilyPlan2">
+        <mat-label>Choose a device 2:</mat-label>
+        <mat-select [(value)]="device2">
+            <mat-option value="iPhone13">iPhone 13</mat-option>
+            <mat-option value="iPhone 13 mini">iPhone 13 mini</mat-option>
+            <mat-option value="Galaxy Z Fold3">Galaxy Z Fold3</mat-option>
+            <mat-option value="Galaxy S22">Galaxy S22</mat-option>
+            <mat-option value="Galazy A13">Galazy A13</mat-option>
+            <mat-option value="Pixel 6">Pixel 6</mat-option>
+        </mat-select>
+
+        <div class="form-group">
+            <label for="PhoneNumber">Phone Number</label>
+            <input [(ngModel)]="phoneNumber2" type="text" class="form-control" id="PhoneNumber" name="PhoneNumber">
+        </div>
+    </div>
+
+    <div *ngIf="activateFamilyPlan3">
+        <mat-label>Choose a device 3:</mat-label>
+        <mat-select [(value)]="device3">
+            <mat-option value="iPhone13">iPhone 13</mat-option>
+            <mat-option value="iPhone 13 mini">iPhone 13 mini</mat-option>
+            <mat-option value="Galaxy Z Fold3">Galaxy Z Fold3</mat-option>
+            <mat-option value="Galaxy S22">Galaxy S22</mat-option>
+            <mat-option value="Galazy A13">Galazy A13</mat-option>
+            <mat-option value="Pixel 6">Pixel 6</mat-option>
+        </mat-select>
+
+        <div class="form-group">
+            <label for="PhoneNumber">Phone Number</label>
+            <input [(ngModel)]="phoneNumber3" type="text" class="form-control" id="PhoneNumber" name="PhoneNumber">
+        </div>
+    </div>
+
+
+    <div *ngIf="activateFamilyPlan4">
+        <mat-label>Choose a device 4:</mat-label>
+        <mat-select [(value)]="device4">
+            <mat-option value="iPhone13">iPhone 13</mat-option>
+            <mat-option value="iPhone 13 mini">iPhone 13 mini</mat-option>
+            <mat-option value="Galaxy Z Fold3">Galaxy Z Fold3</mat-option>
+            <mat-option value="Galaxy S22">Galaxy S22</mat-option>
+            <mat-option value="Galazy A13">Galazy A13</mat-option>
+            <mat-option value="Pixel 6">Pixel 6</mat-option>
+        </mat-select>
+
+        <div class="form-group">
+            <label for="PhoneNumber">Phone Number</label>
+            <input [(ngModel)]="phoneNumber4" type="text" class="form-control" id="PhoneNumber" name="PhoneNumber">
+        </div>
+    </div>
+
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
